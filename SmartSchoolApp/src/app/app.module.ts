@@ -7,12 +7,28 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+
+import { AlunosComponent } from './components/alunos/alunos.component';
+import { ProfessoresComponent } from './components/professores/professores.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
+import { TituloComponent } from './components/shared/titulo/titulo.component';
+import { NavComponent } from './components/shared/nav/nav.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { BsDropdownModule} from 'ngx-bootstrap/dropdown';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AlunosComponent,
+    ProfessoresComponent,
+    PerfilComponent,
+    NavComponent,
+    TituloComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
+    BsDropdownModule.forRoot(),
     NgxSpinnerModule,
     AppRoutingModule,
     BrowserAnimationsModule,
