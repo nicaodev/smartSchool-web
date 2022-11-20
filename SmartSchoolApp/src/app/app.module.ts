@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
@@ -14,7 +15,9 @@ import { PerfilComponent } from './components/perfil/perfil.component';
 import { TituloComponent } from './components/shared/titulo/titulo.component';
 import { NavComponent } from './components/shared/nav/nav.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BsDropdownModule} from 'ngx-bootstrap/dropdown';
+import { ModalModule} from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,11 @@ import { BsDropdownModule} from 'ngx-bootstrap/dropdown';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     BsDropdownModule.forRoot(),
+    ModalModule.forRoot(),
     NgxSpinnerModule,
     AppRoutingModule,
     BrowserAnimationsModule,
