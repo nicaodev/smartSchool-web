@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
 })
 export class AlunoService {
 
-  baseURL = `${environment.mainUrlAPI}aluno`;
+  baseURL = `${environment.mainUrlAPI}Aluno`;
 
   constructor(private http: HttpClient) { }
 
