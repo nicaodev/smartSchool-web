@@ -1,12 +1,16 @@
+
 import { Component, OnInit, TemplateRef, OnDestroy } from '@angular/core';
+import { Aluno } from '../../models/Aluno';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { takeUntil } from 'rxjs/operators';
-
-import { Subject } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { AlunoService } from '../../services/aluno.service';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { ProfessorService } from '../../services/professor.service';
+import { Professor } from '../../models/Professor';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-alunos',
@@ -19,14 +23,14 @@ export class AlunosComponent implements OnInit, OnDestroy {
   public modalRef!: BsModalRef;
   public alunoForm!: FormGroup;
   public titulo = 'Alunos';
-  public alunoSelecionado: Aluno;
+  public alunoSelecionado!: Aluno;
   public textSimple: string = "";
   public profsAlunos: Professor[] = [];
 
   private unsubscriber = new Subject();
 
   public alunos: Aluno[] = [];
-  public aluno: Aluno;
+  public aluno!: Aluno;
   public msnDeleteAluno!: string;
   public modeSave = 'post';
 
@@ -53,9 +57,9 @@ export class AlunosComponent implements OnInit, OnDestroy {
   }
 
   constructor(
-    //private alunoService: AlunoService,
+    private alunoService: AlunoService,
     private route: ActivatedRoute,
-    //private professorService: ProfessorService,
+    private professorService: ProfessorService,
     private fb: FormBuilder,
     private modalService: BsModalService,
     private toastr: ToastrService,
@@ -109,7 +113,7 @@ export class AlunosComponent implements OnInit, OnDestroy {
 
   carregarAlunos() {
 
-    let id =this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id');
 
     this.spinner.show();
     this.alunoService.getAll()
@@ -117,8 +121,8 @@ export class AlunosComponent implements OnInit, OnDestroy {
       .subscribe((alunos: Aluno[]) => {
         this.alunos = alunos;
 
-        if (id != null) {
-          this.alunoSelect(this.alunos.find(aluno => aluno.id === id));
+        if (id.length > 0) {
+          this.alunoSelect(this.alunos.find(aluno => aluno.id.toString() == id));
         }
 
         this.toastr.success('Alunos foram carregado com Sucesso!');
