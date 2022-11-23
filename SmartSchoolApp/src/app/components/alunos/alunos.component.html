@@ -40,9 +40,8 @@
         <tr>
           <th scope="col">Visualizar</th>
           <th scope="col">#</th>
-          <th scope="col">Nome</th>
-          <th scope="col">Sobrenome</th>
-          <th scope="col">telefone</th>
+          <th scope="col">Nome Completo</th>
+          <th scope="col">Telefone</th>
           <th scope="col">Opções</th>
         </tr>
       </thead>
@@ -52,7 +51,6 @@
             class="text-dark btn btn-sm btn-outline-warning">Detalhe</button></td>
           <td scope="row">{{aluno.id}}</td>
           <td>{{aluno.nome}}</td>
-          <td>{{aluno.sobrenome}}</td>
           <td>{{aluno.telefone}}</td>
           <td>
             <div class="btn-group">
@@ -69,11 +67,12 @@
 
 <ng-template #template>
   <div class="modal-body">
-    <!--<app-professores-alunos (closeModal)="closeModal()" [professores]="profsAlunos"></app-professores-alunos>-->
+    <app-professores-alunos (closeModal)="closeModal()" [professores]="profsAlunos"></app-professores-alunos>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn pull-right" aria-label="Close"
       (click)="modalRef.hide()">
+
       FECHAR
     </button>
   </div>

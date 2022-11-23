@@ -50,8 +50,9 @@ export class AlunosComponent implements OnInit, OnDestroy {
         this.profsAlunos = professores;
         this.modalRef = this.modalService.show(template);
       }, (error: any) => {
-        this.toastr.error(`erro: ${error}`);
-        console.log(error);
+        this.toastr.error(`erro: ${error.message}`);
+        console.error(error.message);
+        this.spinner.hide();
       }, () => this.spinner.hide()
       );
   }
@@ -105,6 +106,7 @@ export class AlunosComponent implements OnInit, OnDestroy {
           }, (error: any) => {
             this.toastr.error(`Erro: Aluno não pode ser salvo!`);
             console.error(error);
+            this.spinner.hide();
           }, () => this.spinner.hide()
         );
 
@@ -128,7 +130,8 @@ export class AlunosComponent implements OnInit, OnDestroy {
         this.toastr.success('Alunos foram carregado com Sucesso!');
       }, (error: any) => {
         this.toastr.error('Alunos não carregados!');
-        console.log(error);
+        console.error(error);
+        this.spinner.hide();
       }, () => this.spinner.hide()
       );
   }
