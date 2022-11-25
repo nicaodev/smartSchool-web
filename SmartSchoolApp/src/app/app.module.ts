@@ -19,6 +19,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import { ModalModule} from 'ngx-bootstrap/modal';
 import { ProfessoresAlunosComponent } from './components/alunos/professores-alunos/professores-alunos.component';
+import { AlunosProfessoresComponent } from './components/professores/alunos-professores/alunos-professores.component';
+import { ProfessorDetalheComponent } from './components/professores/professor-detalhe/professor-detalhe.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { ProfessoresAlunosComponent } from './components/alunos/professores-alun
     PerfilComponent,
     NavComponent,
     TituloComponent,
+    AlunosProfessoresComponent,
+    ProfessorDetalheComponent,
     DashboardComponent
   ],
   imports: [
